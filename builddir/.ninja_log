@@ -1,0 +1,6 @@
+# ninja log v5
+0	191	1637278275	trainee_task@exe/Source_Command.cpp.o	f57a02c7fe1820d2
+1	200	1637278275	trainee_task@exe/Source_MobileService.cpp.o	762322a538d0457b
+3	255	1637278275	trainee_task@exe/main.cpp.o	dabcb375d12addaf
+2	306	1637278275	trainee_task@exe/Source_View.cpp.o	e883c5e8f4899b7f
+306	359	1637278275	trainee_task	45029c5dfb25e6aa

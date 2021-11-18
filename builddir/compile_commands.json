@@ -1,0 +1,22 @@
+[
+  {
+    "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
+    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -g -MD -MQ 'trainee_task@exe/Source_Command.cpp.o' -MF 'trainee_task@exe/Source_Command.cpp.o.d' -o 'trainee_task@exe/Source_Command.cpp.o' -c ../Source/Command.cpp",
+    "file": "../Source/Command.cpp"
+  },
+  {
+    "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
+    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -g -MD -MQ 'trainee_task@exe/Source_MobileService.cpp.o' -MF 'trainee_task@exe/Source_MobileService.cpp.o.d' -o 'trainee_task@exe/Source_MobileService.cpp.o' -c ../Source/MobileService.cpp",
+    "file": "../Source/MobileService.cpp"
+  },
+  {
+    "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
+    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -g -MD -MQ 'trainee_task@exe/Source_View.cpp.o' -MF 'trainee_task@exe/Source_View.cpp.o.d' -o 'trainee_task@exe/Source_View.cpp.o' -c ../Source/View.cpp",
+    "file": "../Source/View.cpp"
+  },
+  {
+    "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
+    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -g -MD -MQ 'trainee_task@exe/main.cpp.o' -MF 'trainee_task@exe/main.cpp.o.d' -o 'trainee_task@exe/main.cpp.o' -c ../main.cpp",
+    "file": "../main.cpp"
+  }
+]

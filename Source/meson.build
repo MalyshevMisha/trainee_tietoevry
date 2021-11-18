@@ -1,0 +1,1 @@
+project_sources += files('Command.cpp', 'MobileService.cpp', 'View.cpp')
