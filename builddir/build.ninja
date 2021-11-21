@@ -14,6 +14,10 @@ rule cpp_COMPILER
 
 # Rules for linking.
 
+rule STATIC_LINKER
+ command = rm -f $out && gcc-ar $LINK_ARGS $out $in
+ description = Linking static target $out
+
 rule cpp_LINKER
  command = c++ $ARGS -o $out $in $LINK_ARGS
  description = Linking target $out
@@ -36,24 +40,31 @@ build PHONY: phony
 
 # Build rules for targets
 
+build NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o: cpp_COMPILER ../NetConfAgent/source/NetConfAgent.cpp
+ DEPFILE = NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o.d
+ ARGS = -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC
+
+build NetConfAgent/libNetConfAgent.a: STATIC_LINKER NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o
+ LINK_ARGS = csrD
+
 build trainee_task@exe/Source_Command.cpp.o: cpp_COMPILER ../Source/Command.cpp
  DEPFILE = trainee_task@exe/Source_Command.cpp.o.d
- ARGS = -Itrainee_task@exe -I. -I.. -I../Header -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -g
+ ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g
 
 build trainee_task@exe/Source_MobileService.cpp.o: cpp_COMPILER ../Source/MobileService.cpp
  DEPFILE = trainee_task@exe/Source_MobileService.cpp.o.d
- ARGS = -Itrainee_task@exe -I. -I.. -I../Header -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -g
+ ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g
 
 build trainee_task@exe/Source_View.cpp.o: cpp_COMPILER ../Source/View.cpp
  DEPFILE = trainee_task@exe/Source_View.cpp.o.d
- ARGS = -Itrainee_task@exe -I. -I.. -I../Header -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -g
+ ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g
 
 build trainee_task@exe/main.cpp.o: cpp_COMPILER ../main.cpp
  DEPFILE = trainee_task@exe/main.cpp.o.d
- ARGS = -Itrainee_task@exe -I. -I.. -I../Header -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -g
+ ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g
 
-build trainee_task: cpp_LINKER trainee_task@exe/Source_Command.cpp.o trainee_task@exe/Source_MobileService.cpp.o trainee_task@exe/Source_View.cpp.o trainee_task@exe/main.cpp.o
- LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined
+build trainee_task: cpp_LINKER trainee_task@exe/Source_Command.cpp.o trainee_task@exe/Source_MobileService.cpp.o trainee_task@exe/Source_View.cpp.o trainee_task@exe/main.cpp.o | /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libsysrepo-cpp.so /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libyang-cpp.so NetConfAgent/libNetConfAgent.a
+ LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,--start-group NetConfAgent/libNetConfAgent.a /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libsysrepo-cpp.so /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libyang-cpp.so -Wl,--end-group '-Wl,-rpath,$$ORIGIN/NetConfAgent' -Wl,-rpath-link,/home/misha/work/tietoevry/trainee/trainee_task/builddir/NetConfAgent
 
 # Test rules
 
@@ -107,7 +118,7 @@ build meson-uninstall: CUSTOM_COMMAND PHONY
 
 build uninstall: phony meson-uninstall
 
-build all: phony trainee_task
+build all: phony NetConfAgent/libNetConfAgent.a trainee_task
 
 build clean: phony meson-clean
 
@@ -115,13 +126,13 @@ build meson-clean: CUSTOM_COMMAND PHONY
  COMMAND = /usr/bin/ninja -t clean
  description = Cleaning
 
-build build.ninja: REGENERATE_BUILD ../meson.build ../Source/meson.build meson-private/coredata.dat
+build build.ninja: REGENERATE_BUILD ../meson.build ../Source/meson.build ../NetConfAgent/meson.build meson-private/coredata.dat
  pool = console
 
 build reconfigure: REGENERATE_BUILD PHONY
  pool = console
 
-build ../meson.build ../Source/meson.build meson-private/coredata.dat: phony 
+build ../meson.build ../Source/meson.build ../NetConfAgent/meson.build meson-private/coredata.dat: phony 
 
 default all
 
