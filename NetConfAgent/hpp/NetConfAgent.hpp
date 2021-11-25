@@ -1,18 +1,22 @@
 #pragma once
 #include <sysrepo-cpp/Connection.hpp>
+#include<iostream>
+#include<optional>
+#include<atomic>
 
 class NetConfAgent
 {
-private:
-    std::unique_ptr<sysrepo::Connection> conn;
-    std::unique_ptr<sysrepo::Subscription> sub;
 public:
     NetConfAgent(){}
     bool initSysrepo();
     bool closeSysyrepo();
-    bool fetchData();
+    bool fetchData(const std::string & path, std::string & result);
     bool subscribeForModelChanges();
     bool registerOpenData();
     bool subscribeForRpc();
     bool notifySusrepo();
+private:
+    std::unique_ptr<sysrepo::Connection> _conn;
+    std::optional<sysrepo::Session> _sess;
+    std::optional<sysrepo::Subscription> _sub;
 };

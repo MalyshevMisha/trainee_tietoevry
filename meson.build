@@ -1,5 +1,5 @@
 project('trainee_project', 'cpp',
-     default_options : ('cpp_std=c++2a'))
+     default_options : ('cpp_std=c++2a'), warning_level : 0)
 
 project_sources = []
 
