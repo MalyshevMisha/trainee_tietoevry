@@ -63,6 +63,8 @@
         "thread": "cpp",
         "variant": "cpp",
         "filesystem": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "bitset": "cpp",
+        "regex": "cpp"
     }
 }

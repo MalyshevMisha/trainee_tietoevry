@@ -6,6 +6,16 @@
   },
   {
     "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
+    "command": "c++ -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC -MD -MQ 'NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o' -MF 'NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o.d' -o 'NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o' -c ../NetConfAgent/source/MobileClient.cpp",
+    "file": "../NetConfAgent/source/MobileClient.cpp"
+  },
+  {
+    "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
+    "command": "c++ -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC -MD -MQ 'NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o' -MF 'NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o.d' -o 'NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o' -c ../NetConfAgent/source/PathGenerator.cpp",
+    "file": "../NetConfAgent/source/PathGenerator.cpp"
+  },
+  {
+    "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
     "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -MD -MQ 'trainee_task@exe/Source_Command.cpp.o' -MF 'trainee_task@exe/Source_Command.cpp.o.d' -o 'trainee_task@exe/Source_Command.cpp.o' -c ../Source/Command.cpp",
     "file": "../Source/Command.cpp"
   },

@@ -44,7 +44,15 @@ build NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o: cpp_COMP
  DEPFILE = NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o.d
  ARGS = -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC
 
-build NetConfAgent/libNetConfAgent.a: STATIC_LINKER NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o
+build NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o: cpp_COMPILER ../NetConfAgent/source/MobileClient.cpp
+ DEPFILE = NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o.d
+ ARGS = -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC
+
+build NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o: cpp_COMPILER ../NetConfAgent/source/PathGenerator.cpp
+ DEPFILE = NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o.d
+ ARGS = -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC
+
+build NetConfAgent/libNetConfAgent.a: STATIC_LINKER NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o
  LINK_ARGS = csrD
 
 build trainee_task@exe/Source_Command.cpp.o: cpp_COMPILER ../Source/Command.cpp
