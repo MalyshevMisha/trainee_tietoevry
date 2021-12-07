@@ -3,20 +3,21 @@
 #include"MobileState.hpp"
 #include"PathGenerator.hpp"
 
+class NetConfAgent;
+
 class MobileClient
 {
 public:
     MobileClient();
-    ~MobileClient();
 
-    void handleModuleChange();
+    void handleModuleChange(const libyang::DataNode & nod);
     void handleOperData();
     void handleRPC();
     void handleNorification();
     bool regist(const std::string & number);
     bool unregist();
     bool setName(const std::string & name);
-    bool call();
+    bool call(const std::string & number);
     void callEnd();
     void answer();
     void reject();

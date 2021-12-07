@@ -1,4 +1,4 @@
-Build started at 2021-12-01T12:50:32.752650
+Build started at 2021-12-06T01:38:04.922643
 Main binary: /usr/bin/python3
 Build Options: 
 Python system: Linux
@@ -7,8 +7,6 @@ Version: 0.54.2
 Source dir: /home/misha/work/tietoevry/trainee/trainee_task
 Build dir: /home/misha/work/tietoevry/trainee/trainee_task/builddir
 Build type: native build
-meson.build:1: WARNING: Passed invalid keyword argument "warning_level".
-WARNING: This will become a hard error in the future.
 None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 Project name: trainee_project
@@ -76,8 +74,8 @@ Called `/usr/bin/pkg-config sysrepo-cpp --libs` -> 0
 -lsysrepo-cpp
 None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpob2zcr8q
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpob2zcr8q/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpob2zcr8q/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive 
+Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp989_fcnw
+Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp989_fcnw/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp989_fcnw/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive 
 
 Code:
  #include<stdio.h>
@@ -98,8 +96,8 @@ Program stderr:
 
 
 Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpajtr80w6
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpajtr80w6/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpajtr80w6/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
+Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpkdx696ge
+Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpkdx696ge/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpkdx696ge/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
 
 Code:
  

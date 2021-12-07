@@ -1,5 +1,10 @@
 #include"NetConfAgent.hpp"
 
+NetConfAgent::NetConfAgent(MobileClient * mobC)
+{
+    _observ = mobC;
+}
+
 bool NetConfAgent::initSysrepo()
 {
     _conn = std::make_unique<sysrepo::Connection>();
@@ -29,15 +34,16 @@ bool NetConfAgent::changeData(const std::string & path, std::string & value)
     return true;
 }
 
-bool NetConfAgent::subscribeForModelChanges()
+bool NetConfAgent::subscribeForModelChanges(const std::string & path)
 {
-    sysrepo::ModuleChangeCb moduleChangeCb = [] (sysrepo::Session session, auto, auto, auto, auto, auto) -> sysrepo::ErrorCode {
-            for (const auto& change : session.getChanges())
-                std::cout<<change.node.path()<<std::endl;
-            return sysrepo::ErrorCode::Ok;
-        };
-        _sub = _sess->onModuleChange("testmodel", moduleChangeCb);
-        _sub->onModuleChange("testmodel", moduleChangeCb);
+    sysrepo::ModuleChangeCb moduleChangeCb = [&] (sysrepo::Session session, auto, auto, auto, auto, auto) -> sysrepo::ErrorCode 
+    {
+        for (const auto& change : session.getChanges())
+            _observ->handleModuleChange(change.node);
+        return sysrepo::ErrorCode::Ok;
+    };
+        _sub = _sess->onModuleChange(path.c_str(), moduleChangeCb);
+        _sub->onModuleChange(path.c_str(), moduleChangeCb);
     return true;
 }
 

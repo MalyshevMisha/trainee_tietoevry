@@ -1,18 +1,17 @@
 #include"View.hpp"
 #include"NetConfAgent.hpp"
+#include"MobileClient.hpp"
 
 int main()
 {
-    std::unique_ptr<NetConfAgent> netconf(new NetConfAgent());
-    netconf->initSysrepo();
-    netconf->subscribeForModelChanges();
-    std::string path = "/testmodel:sports/person[name='Mike']";
-    std::string res;
-    std::string age{"12"};
-    //netconf->changeData(path+"/age", age);
-    netconf->fetchData(path+"/age", res);
-    std::cout<<res<<std::endl;
-    //std::unique_ptr<Interface>inter(new CLI());
+    std::unique_ptr<MobileClient> mc(new MobileClient);
+    mc->setName("Misha");
+    mc->regist("2");
+    mc->call("1");
+    //std::string path = "/testmodel:sports/person[name='Mike']";
+    //std::string res;
+    //std::unique_ptr<NetConfAgent> netC(mc);
+    //std::unique_ptr<Interface>inter(new CLI);
     //inter->execute();
     return 0;
 }

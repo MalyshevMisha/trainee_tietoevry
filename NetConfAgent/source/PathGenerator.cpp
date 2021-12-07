@@ -1,14 +1,8 @@
 #include"PathGenerator.hpp"
 
-std::string generatePathNumber(const std::string & number)
+std::string PathGenerator::generatePath(const std::string & listId, std::string path)
 {
-    return std::string("/"+PathGenerator::_MODEL_NAME + ":" + "user" + 
-    "/" + "subscribers" +  "/" + "subscriber" + 
-    "[userNumber='" + number + "']" + "/" + "userNumber");
+    return path.replace(path.find(PathGenerator::_KEY_WORD),
+                         PathGenerator::_KEY_WORD.length(),
+                          listId);
 }
-
-std::string generatePathName(const std::string & number)
-{
-    return std::string("/"+PathGenerator::_MODEL_NAME + ":" + "user" + 
-    "/" + "subscribers" +  "/" + "subscriber" + 
-    "[userNumber='" + number + "']" + "/" + "userName");}
