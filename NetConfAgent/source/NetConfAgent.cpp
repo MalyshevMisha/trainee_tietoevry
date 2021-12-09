@@ -1,10 +1,5 @@
 #include"NetConfAgent.hpp"
 
-NetConfAgent::NetConfAgent(MobileClient * mobC)
-{
-    _observ = mobC;
-}
-
 bool NetConfAgent::initSysrepo()
 {
     _conn = std::make_unique<sysrepo::Connection>();
@@ -17,33 +12,40 @@ bool NetConfAgent::closeSysyrepo(){return false;}
 
 bool NetConfAgent::fetchData(const std::string & path, std::string & result)
 {
-    auto data = _sess->getData(path.c_str()); //null opt
+    auto data = _sess->getData(path.c_str());
     if(data == std::nullopt)
     {
         return false;
     }
-    data->path();
-    result = data->findPath(path.c_str()).value().asTerm().valueStr();
-    return true;
+    data->path();   
+    if(data->findPath(path.c_str()).value().schema().nodeType() == libyang::NodeType::Leaf)
+    {
+        result = data->findPath(path.c_str()).value().asTerm().valueStr();
+        return true;
+    }
+    return false;
 }
 
-bool NetConfAgent::changeData(const std::string & path, std::string & value)
+bool NetConfAgent::changeData(const std::string & path, const std::string & value)
 {
     _sess->setItem(path.c_str(), value.c_str());
     _sess->applyChanges();
     return true;
 }
 
-bool NetConfAgent::subscribeForModelChanges(const std::string & path)
+bool NetConfAgent::subscribeForModelChanges(const std::string & modelName, const std::string & path, MobileClient * mobC)
 {
     sysrepo::ModuleChangeCb moduleChangeCb = [&] (sysrepo::Session session, auto, auto, auto, auto, auto) -> sysrepo::ErrorCode 
     {
         for (const auto& change : session.getChanges())
-            _observ->handleModuleChange(change.node);
+            {
+                if(change.node.schema().nodeType() == libyang::NodeType::Leaf)
+                mobC->handleModuleChange(static_cast<std::string>(change.node.path()),
+                                        static_cast<std::string>(change.node.asTerm().valueStr()));
+            }
         return sysrepo::ErrorCode::Ok;
     };
-        _sub = _sess->onModuleChange(path.c_str(), moduleChangeCb);
-        _sub->onModuleChange(path.c_str(), moduleChangeCb);
+    _sub = _sess->onModuleChange(modelName.c_str(), moduleChangeCb, path.c_str(), 0 , sysrepo::SubscribeOptions::DoneOnly, nullptr);
     return true;
 }
 

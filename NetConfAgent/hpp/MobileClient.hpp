@@ -10,7 +10,7 @@ class MobileClient
 public:
     MobileClient();
 
-    void handleModuleChange(const libyang::DataNode & nod);
+    void handleModuleChange(std::string path, std::string val);
     void handleOperData();
     void handleRPC();
     void handleNorification();
@@ -24,7 +24,7 @@ public:
 private:
     std::string _name,
                 _number,
-                _incomingNumber;
-    MobileState _state;
+                _incomingNumber,
+                _outgoingNumber;
     std::unique_ptr<NetConfAgent> _netConf;
 };
