@@ -28,11 +28,12 @@ public:
     void callEnd();
     void answer();
     void reject();
+
 private:
     std::string _name,
-                _number,
-                _incomingNumber,
-                _outgoingNumber;
+                _number;
     std::unique_ptr<NetConfAgent> _netConf;
+    std::string _incomingNumber,
+                _outgoingNumber;
     State _state;
 };
