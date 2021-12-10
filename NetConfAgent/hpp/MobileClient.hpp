@@ -5,6 +5,13 @@
 
 class NetConfAgent;
 
+enum class State 
+{
+    Idle,
+    Active,
+    Busy
+};
+
 class MobileClient
 {
 public:
@@ -27,4 +34,5 @@ private:
                 _incomingNumber,
                 _outgoingNumber;
     std::unique_ptr<NetConfAgent> _netConf;
+    State _state;
 };

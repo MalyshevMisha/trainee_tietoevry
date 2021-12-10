@@ -1,6 +1,13 @@
 #pragma once
 #include<string>
 
+namespace StateName
+{
+    const std::string _IDLE {"idle"};
+    const std::string _ACTIVE {"active"};
+    const std::string _BUSY {"busy"};
+}
+
 namespace PathGenerator
 {
     const std::string _KEY_WORD("KeyWord");     // the content must be unique for the folowing strings
@@ -11,12 +18,9 @@ namespace PathGenerator
     const std::string _STATE_PATH = "/" + _MODEL_NAME + ":user/subscribers/subscriber[userNumber='" + _KEY_WORD + "']/state";
     const std::string _PATH_FOR_SUBSCRIBE = "/" + _MODEL_NAME + ":user/subscribers/subscriber[userNumber='" + _KEY_WORD + "']";
 
-    std::string generatePath(const std::string & listId, std::string path);
-}
+    const std::string _USER_NUMBER = "userNumber";
+    const std::string _INCOMING_NUMBER = "incomingNamber";
+    const std::string _STATE = "state";
 
-namespace ServState
-{
-    const std::string _IDLE {"idle"};
-    const std::string _ACTIVE {"active"};
-    const std::string _BUSY {"busy"};
+    std::string generatePath(const std::string & listId, std::string path);
 }
