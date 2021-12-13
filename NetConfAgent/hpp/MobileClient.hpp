@@ -28,6 +28,7 @@ public:
     void callEnd();
     void answer();
     void reject();
+    
 
 private:
     std::string _name,

@@ -20,7 +20,7 @@ public:
                          std::string & value);
     bool subscribeForModelChanges(const std::string & modelName, 
                                 const std::string & path, 
-                                MobileClient * mobC);
+                                MobileClient & mobC);
     bool registerOpenData();
     bool subscribeForRpc();
     bool notifySusrepo();
