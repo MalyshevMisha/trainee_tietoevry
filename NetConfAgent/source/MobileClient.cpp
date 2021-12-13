@@ -16,7 +16,6 @@ bool MobileClient::setName(const std::string & name)
 
 bool MobileClient::regist(const std::string & number)
 {
-    std::cout<<"--MobileClient register number\t\"" << number << "\"--"<<std::endl;
     std::string res;
     if(_name.empty() || number.empty())
         return false;
@@ -34,12 +33,23 @@ bool MobileClient::regist(const std::string & number)
 
 bool MobileClient::unregist()
 {
+    if(!_number.empty() && _state == State::Idle)
+    {
+        if(_netConf->removeItem(PathGenerator::generatePath(_number, PathGenerator::_PATH_FOR_SUBSCRIBE)))
+        {
+            _name.clear();
+            _number.clear();
+            _incomingNumber.clear();
+            _outgoingNumber.clear();
+            _state = State::DEFAULT;
+            return true;
+        }
+    }
     return false;
 }
 
 bool MobileClient::call(const std::string & number)
 {
-    std::cout<<"--MobileClient call()--"<< std::endl;
     std::string res;
     if(number.empty() || _number.empty() ||
      !_incomingNumber.empty() || _number == number ||
@@ -55,7 +65,6 @@ bool MobileClient::call(const std::string & number)
                     _netConf->changeData(PathGenerator::generatePath(_outgoingNumber, PathGenerator::_STATE_PATH), StateName::_ACTIVE);
                     _netConf->changeData(PathGenerator::generatePath(_outgoingNumber, PathGenerator::_INCOMING_NUMBER_PATH), _number);
                     _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_STATE_PATH), StateName::_ACTIVE);
-                    std::cout<<"--MobileClient call() correct end--"<< std::endl;
                     return true;
                 }
             }
@@ -82,33 +91,35 @@ void MobileClient::handleModuleChange(std::string path, std::string val)
 
 
     if(path.find(PathGenerator::_STATE) != std::string::npos && 
-        val == StateName::_ACTIVE)
+        val == StateName::_ACTIVE && _state == State::Idle)
     {
         _state = State::Active;
-        std::cout << "\n--Calling--\n" << std::endl;
+        std::cout << "--Calling--" << std::endl;
     }
-    else if(path.find(PathGenerator::_INCOMING_NUMBER) != std::string::npos)
+    else if(path.find(PathGenerator::_INCOMING_NUMBER) != std::string::npos &&
+            _state == State::Active)
     {
         _incomingNumber = val;
-        std::cout << "\n--Incoming call\t" << val << "--\n" << std::endl;
+        std::cout << "--Incoming call\t" << val << "--" << std::endl;
     }
     else if(path.find(PathGenerator::_STATE) != std::string::npos && 
-        val == StateName::_BUSY)
+        val == StateName::_BUSY && _state == State::Active)
     {
         _state = State::Busy;
-        std::cout << "\n--Connected--\n" << std::endl;
+        std::cout << "--Connected--" << std::endl;
     }
     else if(path.find(PathGenerator::_STATE) != std::string::npos && 
-        val == StateName::_IDLE)
+        val == StateName::_IDLE && _state == State::Busy)
     {
         _state = State::Idle;
         _incomingNumber.clear();
         _outgoingNumber.clear();
-        std::cout << "\n--End call--\n" << std::endl;
+        std::cout << "--End call--" << std::endl;
     }
-    else
+    else if(_state == State::Idle && _incomingNumber.empty() &&
+            path == PathGenerator::generatePath(_number, PathGenerator::_PATH_FOR_SUBSCRIBE))
     {
-        std::cout << "\n--Something went wrong--\n" << std::endl;
+        std::cout << "--Unregister--" << std::endl;
     }
 }
 

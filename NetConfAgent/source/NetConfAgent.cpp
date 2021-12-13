@@ -12,7 +12,6 @@ bool NetConfAgent::closeSysyrepo(){return false;}
 
 bool NetConfAgent::fetchData(const std::string & path, std::string & result)
 {
-    std::cout<<"--NetConfAgent fetchData()--"<< std::endl;
     auto data = _sess->getData(path.c_str());
     if(data == std::nullopt)
     {
@@ -29,7 +28,6 @@ bool NetConfAgent::fetchData(const std::string & path, std::string & result)
 
 bool NetConfAgent::changeData(const std::string & path, const std::string & value)
 {
-    std::cout<<"--NetConfAgent changeData()--"<< std::endl;
     _sess->setItem(path.c_str(), value.c_str());
     _sess->applyChanges();
     return true;
@@ -37,7 +35,6 @@ bool NetConfAgent::changeData(const std::string & path, const std::string & valu
 
 bool NetConfAgent::subscribeForModelChanges(const std::string & modelName, const std::string & path, MobileClient & mobC)
 {
-    std::cout<<"--NetConfAgent subscribeForModelChanges()--"<< std::endl;
     sysrepo::ModuleChangeCb moduleChangeCb = [&] (sysrepo::Session session, auto, auto, auto, auto, auto) -> sysrepo::ErrorCode 
     {
         for (const auto& change : session.getChanges())
@@ -63,6 +60,18 @@ bool NetConfAgent::changeNoConfig(const std::string & path, std::string & value)
     };
     _sub = _sess.onOperGetItems("test_module", operGetCb, "/test_module:stateLeaf");*/
     return true;
+}
+
+bool NetConfAgent::removeItem(const std::string & path)
+{
+    auto data = _sess->getData(path.c_str());
+    if(data != std::nullopt)
+    {
+        _sess->deleteItem(path.c_str());
+        _sess->applyChanges();
+        return true;
+    }
+    return false;
 }
 
 bool NetConfAgent::registerOpenData(){return false;}

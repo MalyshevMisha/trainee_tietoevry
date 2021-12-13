@@ -7,6 +7,7 @@ class NetConfAgent;
 
 enum class State 
 {
+    DEFAULT,
     Idle,
     Active,
     Busy
@@ -31,10 +32,10 @@ public:
     
 
 private:
-    std::string _name,
-                _number;
-    std::unique_ptr<NetConfAgent> _netConf;
-    std::string _incomingNumber,
-                _outgoingNumber;
+    std::string _name;
+    std::string _number;
+    std::string _incomingNumber;
+    std::string _outgoingNumber;
     State _state;
+    std::unique_ptr<NetConfAgent> _netConf;
 };

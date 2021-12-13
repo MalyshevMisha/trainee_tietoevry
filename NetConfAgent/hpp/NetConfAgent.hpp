@@ -21,6 +21,7 @@ public:
     bool subscribeForModelChanges(const std::string & modelName, 
                                 const std::string & path, 
                                 MobileClient & mobC);
+    bool removeItem(const std::string & path);
     bool registerOpenData();
     bool subscribeForRpc();
     bool notifySusrepo();
