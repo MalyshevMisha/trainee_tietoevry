@@ -1,0 +1,1 @@
+test_sources += files('Source/MobileClientTest.cpp')

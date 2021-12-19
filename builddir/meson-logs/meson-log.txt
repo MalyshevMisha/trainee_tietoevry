@@ -1,4 +1,4 @@
-Build started at 2021-12-06T01:38:04.922643
+Build started at 2021-12-20T01:38:06.228816
 Main binary: /usr/bin/python3
 Build Options: 
 Python system: Linux
@@ -59,23 +59,56 @@ Pkg-config binary missing from cross or native file, or env var undefined.
 Trying a default Pkg-config fallback at pkg-config
 Trying pkg-config binary pkg-config for machine MachineChoice.HOST at ['/usr/bin/pkg-config']
 Found pkg-config: /usr/bin/pkg-config (0.29.1)
-Determining dependency 'sysrepo-cpp' with pkg-config executable '/usr/bin/pkg-config'
+Determining dependency 'gtest_main' with pkg-config executable '/usr/bin/pkg-config'
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion sysrepo-cpp` -> 0
-alpha
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --cflags sysrepo-cpp` -> 0
+Called `/usr/bin/pkg-config --modversion gtest_main` -> 1
 
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config sysrepo-cpp --libs` -> 0
--L/usr/lib/x86_64-linux-gnu -lsysrepo-cpp
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config sysrepo-cpp --libs` -> 0
--lsysrepo-cpp
-None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp989_fcnw
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp989_fcnw/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp989_fcnw/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive 
+Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpnidkhtrv
+Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpnidkhtrv/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpnidkhtrv/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Wl,--start-group -lgtest -Wl,--end-group -Wl,--allow-shlib-undefined 
+
+Code:
+ int main(void) { return 0; }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Running compile:
+Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpugclvw9w
+Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpugclvw9w/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpugclvw9w/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Wl,--start-group -lgtest_main -Wl,--end-group -Wl,--allow-shlib-undefined 
+
+Code:
+ int main(void) { return 0; }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Run-time dependency GTest found: YES (prebuilt)
+Pkg-config binary for MachineChoice.HOST is cached.
+Determining dependency 'gmock' with pkg-config executable '/usr/bin/pkg-config'
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --modversion gmock` -> 1
+
+Pkg-config binary for MachineChoice.HOST is cached.
+Determining dependency 'gtest' with pkg-config executable '/usr/bin/pkg-config'
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --modversion gtest` -> 1
+
+Running compile:
+Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpvcqqvwlk
+Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpvcqqvwlk/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpvcqqvwlk/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Wl,--start-group -lgmock -Wl,--end-group -Wl,--allow-shlib-undefined 
+
+Code:
+ int main(void) { return 0; }
+Compiler stdout:
+ 
+Compiler stderr:
+ /usr/bin/ld: cannot find -lgmock
+collect2: error: ld returned 1 exit status
+
+Running compile:
+Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp9jya_y20
+Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp9jya_y20/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp9jya_y20/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive 
 
 Code:
  #include<stdio.h>
@@ -96,8 +129,8 @@ Program stderr:
 
 
 Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpkdx696ge
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpkdx696ge/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpkdx696ge/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
+Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpddqa63v6
+Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpddqa63v6/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpddqa63v6/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
 
 Code:
  
@@ -108,6 +141,34 @@ libraries: =/usr/lib/gcc/x86_64-linux-gnu/10/:/usr/lib/gcc/x86_64-linux-gnu/10/.
 
 Compiler stderr:
  
+Running compile:
+Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpxfakfshk
+Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpxfakfshk/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpxfakfshk/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Wl,--start-group -lgmock_main -Wl,--end-group -Wl,--allow-shlib-undefined 
+
+Code:
+ int main(void) { return 0; }
+Compiler stdout:
+ 
+Compiler stderr:
+ /usr/bin/ld: cannot find -lgmock_main
+collect2: error: ld returned 1 exit status
+
+Run-time dependency GMock found: YES (building self)
+Pkg-config binary for MachineChoice.HOST is cached.
+Determining dependency 'sysrepo-cpp' with pkg-config executable '/usr/bin/pkg-config'
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --modversion sysrepo-cpp` -> 0
+alpha
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --cflags sysrepo-cpp` -> 0
+
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config sysrepo-cpp --libs` -> 0
+-L/usr/lib/x86_64-linux-gnu -lsysrepo-cpp
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config sysrepo-cpp --libs` -> 0
+-lsysrepo-cpp
+None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 Run-time dependency sysrepo-cpp found: YES alpha
 Pkg-config binary for MachineChoice.HOST is cached.
 Determining dependency 'doctest' with pkg-config executable '/usr/bin/pkg-config'
@@ -119,7 +180,7 @@ None of 'CMAKE' are defined in the environment, not changing global flags.
 CMake binary missing from cross or native file, or env var undefined.
 Trying a default CMake fallback at cmake
 Trying CMake binary cmake for machine MachineChoice.HOST at ['/snap/bin/cmake']
-Found CMake: /snap/bin/cmake (3.22.0)
+Found CMake: /snap/bin/cmake (3.22.1)
 Extracting basic cmake information
 Try CMake generator: auto
 None of 'CC' are defined in the environment, not changing global flags.
@@ -130,8 +191,8 @@ None of 'CC_LD' are defined in the environment, not changing global flags.
 None of 'FC' are defined in the environment, not changing global flags.
 Failed to find a fortran compiler for CMake. This might cause CMake to fail.
 Called `/snap/bin/cmake --trace-expand --trace-format=json-v1 --no-warn-unused-cli --trace-redirect=cmake_trace.txt .` in /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/cmake_doctest -> 0
-  -- Module search paths:    ['/', '/opt', '/snap/cmake/992', '/usr', '/usr/local']
-  -- CMake root:             /snap/cmake/992/share/cmake-3.22
+  -- Module search paths:    ['/', '/opt', '/snap/cmake/1000', '/usr', '/usr/local']
+  -- CMake root:             /snap/cmake/1000/share/cmake-3.22
   -- CMake architectures:    ['x86_64-linux-gnu']
   -- CMake lib search paths: ['lib', 'lib32', 'lib64', 'libx32', 'share', 'lib/x86_64-linux-gnu']
 None of 'CMAKE_PREFIX_PATH' are defined in the environment, not changing global flags.

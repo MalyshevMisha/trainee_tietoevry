@@ -1,36 +1,30 @@
 #pragma once
-#include<sysrepo-cpp/Connection.hpp>
-#include<iostream>
-#include<optional>
-#include<atomic>
 #include"MobileClient.hpp"
 #include"INetConfAgent.hpp"
+#include<string>
 
 namespace mainApp
 {
 class MobileClient;
-class INetConfAgent;
 
-/**
- * @brief Class that implements work with server.
- */
-class NetConfAgent : public INetConfAgent
+class INetConfAgent
 {
 public:
+    virtual ~INetConfAgent() = default;
 
     /**
      * @brief Initialization to work with sysrepo-cpp.
      *
      * @return /true always, /false otherwise.
      */
-    bool initSysrepo();
+    virtual bool initSysrepo() = 0;
 
     /**
      * @brief It does not work.
      *
      * @return /false always.
      */
-    bool closeSysyrepo();
+    virtual bool closeSysyrepo() = 0;
 
     /**
      * @brief Get data from server.
@@ -41,8 +35,8 @@ public:
      *
      * @return /true when get data from server is successful, /false otherwise.
      */
-    bool fetchData(const std::string & path,
-        std::string & result);
+    virtual bool fetchData(const std::string & path,
+                            std::string & result) = 0;
 
     /**
      * @brief Change data on server.
@@ -53,8 +47,8 @@ public:
      *
      * @return /true when data was changed, /false otherwise.
      */
-    bool changeData(const std::string & path,
-        const std::string & value);
+    virtual bool changeData(const std::string & path,
+                            const std::string & value) = 0;
 
     /**
      * @brief Generate callback that process all of model changes.
@@ -67,9 +61,9 @@ public:
      *
      * @return /true when subscribe is successful, /false otherwise.
      */
-    bool subscribeForModelChanges(const std::string & modelName, 
-        const std::string & path, 
-        MobileClient & mobC);
+    virtual bool subscribeForModelChanges(const std::string & modelName, 
+                                            const std::string & path, 
+                                            MobileClient & mobC) = 0;
 
     /**
      * @brief Remove object(item) on server.
@@ -78,7 +72,7 @@ public:
      *
      * @return /true when the object(item) is deleted , /false otherwise.
      */
-    bool removeItem(const std::string & path);
+    virtual bool removeItem(const std::string & path) = 0;
 
     /**
      * @brief Generate callback that return operational data(config false).
@@ -91,9 +85,9 @@ public:
      *
      * @return /true when all is successful, /false otherwise.
      */
-    bool registerOperData(const std::string & modelName, 
-        const std::string & path, 
-        MobileClient & mobC);
+    virtual bool registerOperData(const std::string & modelName, 
+                                    const std::string & path, 
+                                    MobileClient & mobC) = 0;
     
     /**
      * @brief Get operational data(config false).
@@ -104,27 +98,21 @@ public:
      *
      * @return /true when get operational data is successful, /false otherwise.
      */
-    bool getOperData(const std::string & path, 
-        std::string & result);
+    virtual bool getOperData(const std::string & path, 
+                            std::string & result) = 0;
 
     /**
      * @brief It does not work.
      *
      * @return /false always.
      */
-    bool subscribeForRpc();
+    virtual bool subscribeForRpc() = 0;
 
     /**
      * @brief It does not work.
      *
      * @return /false always.
      */
-    bool notifySusrepo();
-
-private:
-    std::unique_ptr<sysrepo::Connection> _conn;
-    std::optional<sysrepo::Session> _sess;
-    std::optional<sysrepo::Subscription> _sub;
-    std::optional<sysrepo::Subscription> _subOperData;
+    virtual bool notifySusrepo() = 0;
 };
 }

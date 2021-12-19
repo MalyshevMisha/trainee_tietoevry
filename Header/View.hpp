@@ -4,21 +4,62 @@
 #include"MobileService.hpp"
 #include"Command.hpp"
 
+namespace mainApp
+{
+
+/**
+ * @brief Interface that discribe user interface.
+ */
 class Interface
 {
 public:
-    virtual ~Interface() {}
+
+    /**
+     * @brief Virtual distructor created ot escape memory leak.
+     */
+    virtual ~Interface() = default;
+
+    /**
+     * @brief Run loop for entering commands.
+     */
     virtual void execute() = 0;
 };
 
+
+/**
+ * @brief Realization of command line user interface.
+ */
 class CLI : public Interface
 {
-private:
-    Command getCommand(); // get command from terminal
-    void executeCommand(Command com);   //execute command and print resault
-    std::unique_ptr<MobileService> executor;
-    bool mainLoop;
 public:
+
+    /**
+     * @brief Constructor of CLI class.
+     */
     CLI();
+
+    /**
+     * @brief Run loop for entering commands.
+     */
     void execute();
+private:
+
+    /**
+     * @brief Get command from terminal.
+     *
+     * @return ADT that contains command name and atributes.
+     */
+    Command getCommand();
+
+    /**
+     * @brief Get command from ADT and run it.
+     *
+     * @param[in] com ADT that contains command name and atributes.
+     */
+    void executeCommand(Command com);
+
+    std::unique_ptr<IMobileService> executor;
+    bool mainLoop;
+
 };
+}

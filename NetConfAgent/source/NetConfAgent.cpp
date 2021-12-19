@@ -1,10 +1,11 @@
 #include"NetConfAgent.hpp"
 
+namespace mainApp
+{
 bool NetConfAgent::initSysrepo()
 {
     _conn = std::make_unique<sysrepo::Connection>();
     _sess = _conn->sessionStart();
-    //_sess->copyConfig(sysrepo::Datastore::Startup, "testmodel");
     return true;
 }
 
@@ -49,19 +50,6 @@ bool NetConfAgent::subscribeForModelChanges(const std::string & modelName, const
     return true;
 }
 
-bool NetConfAgent::changeNoConfig(const std::string & path, std::string & value)
-{
-    /*sysrepo::ErrorCode retCode;
-    std::optional<libyang::DataNode> toSet;
-    sysrepo::OperGetItemsCb operGetCb = [&] (sysrepo::Session, auto, auto, auto, auto, auto, std::optional<libyang::DataNode>& parent)
-    {
-        parent = toSet;
-        return retCode;
-    };
-    _sub = _sess.onOperGetItems("test_module", operGetCb, "/test_module:stateLeaf");*/
-    return true;
-}
-
 bool NetConfAgent::removeItem(const std::string & path)
 {
     auto data = _sess->getData(path.c_str());
@@ -74,6 +62,29 @@ bool NetConfAgent::removeItem(const std::string & path)
     return false;
 }
 
-bool NetConfAgent::registerOpenData(){return false;}
+bool NetConfAgent::registerOperData(const std::string & modelName, const std::string & path, MobileClient & mobC)
+{
+    sysrepo::OperGetItemsCb operGetCb = [&, path] (sysrepo::Session, auto, auto, auto, auto, auto, std::optional<libyang::DataNode>& parent) {
+        parent = _sess->getContext().newPath(path.c_str(), mobC.getName().c_str());
+        return sysrepo::ErrorCode::Ok;
+    };
+    _subOperData = _sess->onOperGetItems(modelName.c_str(), operGetCb, path.c_str());
+    std::string res;
+    return true;
+}
+
+bool NetConfAgent::getOperData(const std::string & path, std::string & result)
+{
+    _sess->switchDatastore(sysrepo::Datastore::Operational);
+    if(fetchData(path, result))
+    {
+        _sess->switchDatastore(sysrepo::Datastore::Running);
+        return true;
+    }
+    _sess->switchDatastore(sysrepo::Datastore::Running);
+    return false;
+}
+
 bool NetConfAgent::subscribeForRpc(){return false;}
 bool NetConfAgent::notifySusrepo(){return false;}
+}

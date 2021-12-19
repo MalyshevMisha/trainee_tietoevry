@@ -1,9 +1,28 @@
 #include"MobileClient.hpp"
 
+namespace mainApp
+{
 MobileClient::MobileClient()
 {
     _netConf = std::make_unique<NetConfAgent>();
     _netConf->initSysrepo();
+}
+
+MobileClient::~MobileClient()
+{
+    if(!_incomingNumber.empty())
+    {
+        reject();
+        callEnd();
+    }
+    else if(!_outgoingNumber.empty())
+    {
+        _netConf->changeData(PathGenerator::generatePath(_outgoingNumber, PathGenerator::_STATE_PATH), StateName::_IDLE);
+        _netConf->removeItem(PathGenerator::generatePath(_outgoingNumber, PathGenerator::_INCOMING_NUMBER_PATH));
+        _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_STATE_PATH), StateName::_IDLE);
+    }
+    unregist();
+        
 }
 
 bool MobileClient::setName(const std::string & name)
@@ -23,10 +42,13 @@ bool MobileClient::regist(const std::string & number)
         return false;
     _number = number;
     _netConf->changeData(PathGenerator::generatePath(number, PathGenerator::_NUMBER_PATH), _number);
+    _netConf->registerOperData(PathGenerator::_MODEL_NAME,PathGenerator::generatePath(_number, PathGenerator::_NAME_PATH), *this);
     _netConf->subscribeForModelChanges(PathGenerator::_MODEL_NAME, 
                                     PathGenerator::generatePath(number, PathGenerator::_PATH_FOR_SUBSCRIBE), 
                                     *this);
     _netConf->changeData(PathGenerator::generatePath(number, PathGenerator::_STATE_PATH), StateName::_IDLE);
+    //_netConf->getOperData(PathGenerator::generatePath(_number, PathGenerator::_NAME_PATH), res); 
+    //std::cout << "--regist() getOperData() result\t" << res << "--" << std::endl;
     _state = State::Idle;
     return true;
 }
@@ -73,23 +95,6 @@ bool MobileClient::call(const std::string & number)
 
 void MobileClient::handleModuleChange(std::string path, std::string val)
 {
-    /*std::cout << "\n--path == PathGenerator::_STATE_PATH\t" << (path.find(PathGenerator::_STATE) != std::string::npos) << "--" << std::endl;
-    std::cout << "\n--path == PathGenerator::_INCOMING_NUMBER_PATH\t" << (path.find(PathGenerator::_INCOMING_NUMBER) != std::string::npos) << "--\n" << std::endl;*/
-
-    /*std::cout << "\n--val == StateName::_ACTIVE\t" << (val == StateName::_ACTIVE) << "--\n";
-    std::cout << "\n--val == StateName::_IDLE\t" << (val == StateName::_IDLE) << "--\n";
-    std::cout << "\n--val == StateName::_BUSY\t" << (val == StateName::_BUSY) << "--\n" << std::endl;
-
-    std::cout << "\n--_state == State::Idle\t" << (_state == State::Idle) << "--\n";
-    std::cout << "\n--_state == State::Active\t" << (_state == State::Active) << "--\n";
-    std::cout << "\n--_state == State::Busy\t" << (_state == State::Busy) << "--\n" << std::endl;
-
-    std::cout << "\n--_state == State::Busy\t" << (_state == State::Busy) << "--\n" << std::endl;*/
-
-    //std::cout << "\n--!_outgoingNumber.empty()\t" << (!_outgoingNumber.empty()) << "--\n" << std::endl;
-
-
-
     if(path.find(PathGenerator::_STATE) != std::string::npos && 
         val == StateName::_ACTIVE && _state == State::Idle)
     {
@@ -99,8 +104,13 @@ void MobileClient::handleModuleChange(std::string path, std::string val)
     else if(path.find(PathGenerator::_INCOMING_NUMBER) != std::string::npos &&
             _state == State::Active)
     {
+        if(!val.empty())
+        {
         _incomingNumber = val;
-        std::cout << "--Incoming call\t" << val << "--" << std::endl;
+        std::string res;
+        _netConf->getOperData(PathGenerator::generatePath(_incomingNumber, PathGenerator::_NAME_PATH), res); 
+        std::cout << "--Incoming call\t" << res << "\t number\t" << val << "--" << std::endl;
+        }
     }
     else if(path.find(PathGenerator::_STATE) != std::string::npos && 
         val == StateName::_BUSY && _state == State::Active)
@@ -116,6 +126,14 @@ void MobileClient::handleModuleChange(std::string path, std::string val)
         _outgoingNumber.clear();
         std::cout << "--End call--" << std::endl;
     }
+    else if(path.find(PathGenerator::_STATE) != std::string::npos && 
+        val == StateName::_IDLE && _state == State::Active)
+    {
+        _state = State::Idle;
+        _incomingNumber.clear();
+        _outgoingNumber.clear();
+        std::cout << "--Reject--" << std::endl;
+    }
     else if(_state == State::Idle && _incomingNumber.empty() &&
             path == PathGenerator::generatePath(_number, PathGenerator::_PATH_FOR_SUBSCRIBE))
     {
@@ -123,37 +141,50 @@ void MobileClient::handleModuleChange(std::string path, std::string val)
     }
 }
 
-void MobileClient::answer()
+bool MobileClient::answer()
 {
     if(_state == State::Active && !_incomingNumber.empty() && 
         _incomingNumber != _number)
     {
         _netConf->changeData(PathGenerator::generatePath(_incomingNumber, PathGenerator::_STATE_PATH), StateName::_BUSY);
         _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_STATE_PATH), StateName::_BUSY);
+        return true;
     }
+    return false;
 }
 
-void MobileClient::callEnd()
+bool MobileClient::callEnd()
 {
      if(_state == State::Busy && !_incomingNumber.empty())
     {
         _netConf->changeData(PathGenerator::generatePath(_incomingNumber, PathGenerator::_STATE_PATH), StateName::_IDLE);
         _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_INCOMING_NUMBER_PATH), "");
         _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_STATE_PATH), StateName::_IDLE);
+        return true;
     }
     else if(_state == State::Busy && !_outgoingNumber.empty())
     {
         _netConf->changeData(PathGenerator::generatePath(_outgoingNumber, PathGenerator::_STATE_PATH), StateName::_IDLE);
         _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_STATE_PATH), StateName::_IDLE);
+        return true;
     }
+    return false;
 }
 
-void MobileClient::reject()
+bool MobileClient::reject()
 {
     if(_state == State::Active && !_incomingNumber.empty())
     {
         _netConf->changeData(PathGenerator::generatePath(_incomingNumber, PathGenerator::_STATE_PATH), StateName::_IDLE);
-        _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_INCOMING_NUMBER_PATH), "");
         _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_STATE_PATH), StateName::_IDLE);
+        _netConf->removeItem(PathGenerator::generatePath(_number, PathGenerator::_INCOMING_NUMBER_PATH));
+        return true;
     }
+    return false;
+}
+
+std::string MobileClient::getName()
+{
+    return _name;
+}
 }

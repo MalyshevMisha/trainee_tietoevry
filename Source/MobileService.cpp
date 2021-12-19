@@ -1,5 +1,7 @@
 #include"MobileService.hpp"
 
+namespace mainApp
+{
 TestService::TestService()
 {
     _mc = std::make_unique<MobileClient>();
@@ -21,35 +23,55 @@ bool TestService::unregist()
     return true;
 }
 
-void TestService::setName(const std::string & name)
+bool TestService::setName(const std::string & name)
 {
     std::cout<<"--setName--"<<std::endl;
     if(!_mc->setName(name))
+    {
         std::cout<<"--set name\t\"" << name << "\"\t is impossible--"<<std::endl;
-}
-
-bool TestService::call(const std::string &number)
-{
-    std::cout<<"--call--"<<std::endl;
-    if(!_mc->call(number))
-        std::cout<<"--cant make call\t\"" << number << "\"--"<<std::endl;
+        return false;
+    }
     return true;
 }
 
-void TestService::callEnd()
+bool TestService::call(const std::string & number)
 {
-    std::cout<<"--callEnd--"<<std::endl;
-    _mc->callEnd();
+    std::cout<<"--call--"<<std::endl;
+    if(!_mc->call(number))
+        std::cout<<"--impossible to make call\t\"" << number << "\"--"<<std::endl;
+    return true;
 }
 
-void TestService::answer()
+bool TestService::callEnd()
 {
-    std::cout<<"--answer--"<<std::endl;
-    _mc->answer();
+    if(_mc->callEnd())
+    {
+        std::cout<<"--callEnd--"<<std::endl;
+        return true;
+    }
+    std::cout<<"--impossible to make callEnd--"<<std::endl;
+    return false;
 }
 
-void TestService::reject()
+bool TestService::answer()
 {
-    std::cout<<"--reject--"<<std::endl;
-    _mc->reject();
+    if(_mc->answer())
+    {
+        std::cout<<"--answer--"<<std::endl;
+        return true;
+    }
+    std::cout<<"--impossible to make answer--"<<std::endl;
+    return false;
+}
+
+bool TestService::reject()
+{
+    if(_mc->reject())
+    {
+        std::cout<<"--reject--"<<std::endl;
+        return true;
+    }
+    std::cout<<"--impossible to make reject--"<<std::endl;
+    return false;
+}
 }

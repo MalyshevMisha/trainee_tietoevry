@@ -1,4 +1,4 @@
-NetConfAgentInc = include_directories('hpp')
+NetConfAgentInc = include_directories('hpp', 'API')
 
 NetConfAgentSource = files('source/NetConfAgent.cpp', 'source/MobileClient.cpp', 'source/PathGenerator.cpp')
 

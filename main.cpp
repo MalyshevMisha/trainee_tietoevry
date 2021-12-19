@@ -3,7 +3,7 @@
 
 int main()
 {
-    std::unique_ptr<Interface>inter(new CLI);
+    std::unique_ptr<mainApp::Interface>inter(new mainApp::CLI);
     inter->execute();
     return 0;
 }

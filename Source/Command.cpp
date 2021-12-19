@@ -1,5 +1,7 @@
 #include"Command.hpp"
 
+namespace mainApp
+{
 Command::Command(const std::string & str)
 {
     unsigned int spaceCounter = 0;
@@ -33,4 +35,5 @@ std::string Command::getCommandName()
 std::vector<std::string> Command::getAttributes()
 {
     return attributes;
+}
 }

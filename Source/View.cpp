@@ -1,6 +1,8 @@
 #include"View.hpp"
 #include<limits>
 
+namespace mainApp
+{
 CLI::CLI()
 {
     executor = std::make_unique<TestService>();
@@ -42,4 +44,5 @@ void CLI::execute()
     {
         executeCommand(getCommand());
     }
+}
 }

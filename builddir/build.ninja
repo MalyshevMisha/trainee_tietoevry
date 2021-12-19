@@ -42,37 +42,41 @@ build PHONY: phony
 
 build NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o: cpp_COMPILER ../NetConfAgent/source/NetConfAgent.cpp
  DEPFILE = NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o.d
- ARGS = -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC
+ ARGS = -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I../NetConfAgent/API -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC
 
 build NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o: cpp_COMPILER ../NetConfAgent/source/MobileClient.cpp
  DEPFILE = NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o.d
- ARGS = -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC
+ ARGS = -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I../NetConfAgent/API -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC
 
 build NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o: cpp_COMPILER ../NetConfAgent/source/PathGenerator.cpp
  DEPFILE = NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o.d
- ARGS = -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC
+ ARGS = -INetConfAgent/759e613@@NetConfAgent@sta -INetConfAgent -I../NetConfAgent -I../NetConfAgent/hpp -I../NetConfAgent/API -I/usr/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -fPIC
 
 build NetConfAgent/libNetConfAgent.a: STATIC_LINKER NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o
  LINK_ARGS = csrD
 
 build trainee_task@exe/Source_Command.cpp.o: cpp_COMPILER ../Source/Command.cpp
  DEPFILE = trainee_task@exe/Source_Command.cpp.o.d
- ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g
+ ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../Test/Mock -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread
 
 build trainee_task@exe/Source_MobileService.cpp.o: cpp_COMPILER ../Source/MobileService.cpp
  DEPFILE = trainee_task@exe/Source_MobileService.cpp.o.d
- ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g
+ ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../Test/Mock -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread
 
 build trainee_task@exe/Source_View.cpp.o: cpp_COMPILER ../Source/View.cpp
  DEPFILE = trainee_task@exe/Source_View.cpp.o.d
- ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g
+ ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../Test/Mock -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread
 
-build trainee_task@exe/main.cpp.o: cpp_COMPILER ../main.cpp
- DEPFILE = trainee_task@exe/main.cpp.o.d
- ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g
+build trainee_task@exe/Test_Source_MobileClientTest.cpp.o: cpp_COMPILER ../Test/Source/MobileClientTest.cpp
+ DEPFILE = trainee_task@exe/Test_Source_MobileClientTest.cpp.o.d
+ ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../Test/Mock -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread
 
-build trainee_task: cpp_LINKER trainee_task@exe/Source_Command.cpp.o trainee_task@exe/Source_MobileService.cpp.o trainee_task@exe/Source_View.cpp.o trainee_task@exe/main.cpp.o | /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libsysrepo-cpp.so /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libyang-cpp.so NetConfAgent/libNetConfAgent.a
- LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,--start-group NetConfAgent/libNetConfAgent.a /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libsysrepo-cpp.so /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libyang-cpp.so -Wl,--end-group '-Wl,-rpath,$$ORIGIN/NetConfAgent' -Wl,-rpath-link,/home/misha/work/tietoevry/trainee/trainee_task/builddir/NetConfAgent
+build trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o: cpp_COMPILER /usr/src/googletest/googlemock/src/gmock-all.cc
+ DEPFILE = trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o.d
+ ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../Test/Mock -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread
+
+build trainee_task: cpp_LINKER trainee_task@exe/Source_Command.cpp.o trainee_task@exe/Source_MobileService.cpp.o trainee_task@exe/Source_View.cpp.o trainee_task@exe/Test_Source_MobileClientTest.cpp.o trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o | /usr/lib/libgtest.a /usr/lib/libgtest_main.a /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libsysrepo-cpp.so /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libyang-cpp.so NetConfAgent/libNetConfAgent.a
+ LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,--start-group NetConfAgent/libNetConfAgent.a -lgtest -lgtest_main -pthread -lgtest /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libsysrepo-cpp.so /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libyang-cpp.so -Wl,--end-group '-Wl,-rpath,$$ORIGIN/NetConfAgent' -Wl,-rpath-link,/home/misha/work/tietoevry/trainee/trainee_task/builddir/NetConfAgent
 
 # Test rules
 
@@ -134,13 +138,13 @@ build meson-clean: CUSTOM_COMMAND PHONY
  COMMAND = /usr/bin/ninja -t clean
  description = Cleaning
 
-build build.ninja: REGENERATE_BUILD ../meson.build ../Source/meson.build ../NetConfAgent/meson.build meson-private/coredata.dat
+build build.ninja: REGENERATE_BUILD ../meson.build ../Source/meson.build ../NetConfAgent/meson.build ../Test/meson.build meson-private/coredata.dat
  pool = console
 
 build reconfigure: REGENERATE_BUILD PHONY
  pool = console
 
-build ../meson.build ../Source/meson.build ../NetConfAgent/meson.build meson-private/coredata.dat: phony 
+build ../meson.build ../Source/meson.build ../NetConfAgent/meson.build ../Test/meson.build meson-private/coredata.dat: phony 
 
 default all
 

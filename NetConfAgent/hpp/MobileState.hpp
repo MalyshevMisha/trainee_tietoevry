@@ -1,6 +1,15 @@
 #pragma once
 
-enum class MobileState
+namespace mainApp
 {
-    DefaultState
+    /**
+     * @brief Enum class to describe client state.
+     */
+enum class State 
+{
+    DEFAULT,
+    Idle,
+    Active,
+    Busy
 };
+}
