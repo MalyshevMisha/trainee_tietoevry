@@ -16,27 +16,22 @@
   },
   {
     "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
-    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../Test/Mock -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread -MD -MQ 'trainee_task@exe/Source_Command.cpp.o' -MF 'trainee_task@exe/Source_Command.cpp.o.d' -o 'trainee_task@exe/Source_Command.cpp.o' -c ../Source/Command.cpp",
+    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../NetConfAgent/API -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -MD -MQ 'trainee_task@exe/Source_Command.cpp.o' -MF 'trainee_task@exe/Source_Command.cpp.o.d' -o 'trainee_task@exe/Source_Command.cpp.o' -c ../Source/Command.cpp",
     "file": "../Source/Command.cpp"
   },
   {
     "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
-    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../Test/Mock -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread -MD -MQ 'trainee_task@exe/Source_MobileService.cpp.o' -MF 'trainee_task@exe/Source_MobileService.cpp.o.d' -o 'trainee_task@exe/Source_MobileService.cpp.o' -c ../Source/MobileService.cpp",
+    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../NetConfAgent/API -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -MD -MQ 'trainee_task@exe/Source_MobileService.cpp.o' -MF 'trainee_task@exe/Source_MobileService.cpp.o.d' -o 'trainee_task@exe/Source_MobileService.cpp.o' -c ../Source/MobileService.cpp",
     "file": "../Source/MobileService.cpp"
   },
   {
     "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
-    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../Test/Mock -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread -MD -MQ 'trainee_task@exe/Source_View.cpp.o' -MF 'trainee_task@exe/Source_View.cpp.o.d' -o 'trainee_task@exe/Source_View.cpp.o' -c ../Source/View.cpp",
+    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../NetConfAgent/API -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -MD -MQ 'trainee_task@exe/Source_View.cpp.o' -MF 'trainee_task@exe/Source_View.cpp.o.d' -o 'trainee_task@exe/Source_View.cpp.o' -c ../Source/View.cpp",
     "file": "../Source/View.cpp"
   },
   {
     "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
-    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../Test/Mock -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread -MD -MQ 'trainee_task@exe/Test_Source_MobileClientTest.cpp.o' -MF 'trainee_task@exe/Test_Source_MobileClientTest.cpp.o.d' -o 'trainee_task@exe/Test_Source_MobileClientTest.cpp.o' -c ../Test/Source/MobileClientTest.cpp",
-    "file": "../Test/Source/MobileClientTest.cpp"
-  },
-  {
-    "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
-    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../Test/Mock -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread -MD -MQ 'trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o' -MF 'trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o.d' -o 'trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o' -c /usr/src/googletest/googlemock/src/gmock-all.cc",
-    "file": "/usr/src/googletest/googlemock/src/gmock-all.cc"
+    "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../NetConfAgent/API -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -MD -MQ 'trainee_task@exe/main.cpp.o' -MF 'trainee_task@exe/main.cpp.o.d' -o 'trainee_task@exe/main.cpp.o' -c ../main.cpp",
+    "file": "../main.cpp"
   }
 ]

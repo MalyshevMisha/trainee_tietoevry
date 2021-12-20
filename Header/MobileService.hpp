@@ -3,6 +3,7 @@
 #include<iostream>
 
 #include"MobileClient.hpp"
+#include"NetConfAgent.hpp"
 
 namespace mainApp
 {

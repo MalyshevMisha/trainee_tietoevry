@@ -19,7 +19,7 @@ public:
     /**
      * @brief Constructor that initialize encapsulated objects.
      */
-    MobileClient();
+    MobileClient(std::shared_ptr<INetConfAgent> netConf);
 
     /**
      * @brief Distructor that make callEnd, reject and unregister if it is necessary.
@@ -119,6 +119,6 @@ private:
     std::string _incomingNumber;
     std::string _outgoingNumber;
     State _state;
-    std::unique_ptr<INetConfAgent> _netConf;
+    std::shared_ptr<INetConfAgent> _netConf;
 };
 }

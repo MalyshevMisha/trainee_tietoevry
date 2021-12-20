@@ -8,8 +8,6 @@
 
 namespace mainApp
 {
-class MobileClient;
-class INetConfAgent;
 
 /**
  * @brief Class that implements work with server.
@@ -42,7 +40,7 @@ public:
      * @return /true when get data from server is successful, /false otherwise.
      */
     bool fetchData(const std::string & path,
-        std::string & result);
+                    std::string & result);
 
     /**
      * @brief Change data on server.
@@ -54,7 +52,7 @@ public:
      * @return /true when data was changed, /false otherwise.
      */
     bool changeData(const std::string & path,
-        const std::string & value);
+                    const std::string & value);
 
     /**
      * @brief Generate callback that process all of model changes.
@@ -68,8 +66,8 @@ public:
      * @return /true when subscribe is successful, /false otherwise.
      */
     bool subscribeForModelChanges(const std::string & modelName, 
-        const std::string & path, 
-        MobileClient & mobC);
+                                    const std::string & path, 
+                                    MobileClient & mobC);
 
     /**
      * @brief Remove object(item) on server.
@@ -92,8 +90,8 @@ public:
      * @return /true when all is successful, /false otherwise.
      */
     bool registerOperData(const std::string & modelName, 
-        const std::string & path, 
-        MobileClient & mobC);
+                        const std::string & path, 
+                        MobileClient & mobC);
     
     /**
      * @brief Get operational data(config false).
@@ -105,7 +103,7 @@ public:
      * @return /true when get operational data is successful, /false otherwise.
      */
     bool getOperData(const std::string & path, 
-        std::string & result);
+                    std::string & result);
 
     /**
      * @brief It does not work.

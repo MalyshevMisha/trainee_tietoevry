@@ -2,9 +2,9 @@
 
 namespace mainApp
 {
-MobileClient::MobileClient()
+MobileClient::MobileClient(std::shared_ptr<INetConfAgent> netConf)
 {
-    _netConf = std::make_unique<NetConfAgent>();
+    _netConf = netConf;
     _netConf->initSysrepo();
 }
 

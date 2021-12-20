@@ -1,6 +1,6 @@
-Build started at 2021-12-20T01:38:06.228816
+Build started at 2021-12-20T16:44:52.019416
 Main binary: /usr/bin/python3
-Build Options: 
+Build Options: -Dbackend=ninja
 Python system: Linux
 The Meson build system
 Version: 0.54.2
@@ -11,39 +11,9 @@ None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global fl
 None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 Project name: trainee_project
 Project version: undefined
-None of 'CXX' are defined in the environment, not changing global flags.
-None of 'CXXFLAGS' are defined in the environment, not changing global flags.
-None of 'LDFLAGS' are defined in the environment, not changing global flags.
-None of 'CPPFLAGS' are defined in the environment, not changing global flags.
-None of 'CXX_LD' are defined in the environment, not changing global flags.
-Sanity testing C++ compiler: c++
-Is cross compiler: False.
-Sanity check compiler command line: c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/sanitycheckcpp.cc -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/sanitycheckcpp.exe -pipe -D_FILE_OFFSET_BITS=64
-Sanity check compile stdout:
-
------
-Sanity check compile stderr:
-
------
-Running test binary command: /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/sanitycheckcpp.exe
 C++ compiler for the build machine: c++ (gcc 10.3.0 "c++ (Ubuntu 10.3.0-1ubuntu1~18.04~1) 10.3.0")
 C++ linker for the build machine: c++ ld.bfd 2.30
 None of 'AR' are defined in the environment, not changing global flags.
-None of 'CXX' are defined in the environment, not changing global flags.
-None of 'CXXFLAGS' are defined in the environment, not changing global flags.
-None of 'LDFLAGS' are defined in the environment, not changing global flags.
-None of 'CPPFLAGS' are defined in the environment, not changing global flags.
-None of 'CXX_LD' are defined in the environment, not changing global flags.
-Sanity testing C++ compiler: c++
-Is cross compiler: False.
-Sanity check compiler command line: c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/sanitycheckcpp.cc -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/sanitycheckcpp.exe -pipe -D_FILE_OFFSET_BITS=64
-Sanity check compile stdout:
-
------
-Sanity check compile stderr:
-
------
-Running test binary command: /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/sanitycheckcpp.exe
 C++ compiler for the host machine: c++ (gcc 10.3.0 "c++ (Ubuntu 10.3.0-1ubuntu1~18.04~1) 10.3.0")
 C++ linker for the host machine: c++ ld.bfd 2.30
 None of 'AR' are defined in the environment, not changing global flags.
@@ -53,84 +23,16 @@ Host machine cpu family: x86_64
 Host machine cpu: x86_64
 Target machine cpu family: x86_64
 Target machine cpu: x86_64
-Pkg-config binary for MachineChoice.HOST is not cached.
-None of 'PKG_CONFIG' are defined in the environment, not changing global flags.
-Pkg-config binary missing from cross or native file, or env var undefined.
-Trying a default Pkg-config fallback at pkg-config
-Trying pkg-config binary pkg-config for machine MachineChoice.HOST at ['/usr/bin/pkg-config']
-Found pkg-config: /usr/bin/pkg-config (0.29.1)
-Determining dependency 'gtest_main' with pkg-config executable '/usr/bin/pkg-config'
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion gtest_main` -> 1
+Dependency sysrepo-cpp found: YES alpha (cached)
+Dependency doctest found: YES 2.4.6 (cached)
+Dependency libyang-cpp found: YES alpha (cached)
+Dependency trompeloeil found: YES 41 (cached)
+Build targets in project: 2
 
+Found ninja-1.8.2 at /usr/bin/ninja
 Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpnidkhtrv
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpnidkhtrv/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpnidkhtrv/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Wl,--start-group -lgtest -Wl,--end-group -Wl,--allow-shlib-undefined 
-
-Code:
- int main(void) { return 0; }
-Compiler stdout:
- 
-Compiler stderr:
- 
-Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpugclvw9w
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpugclvw9w/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpugclvw9w/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Wl,--start-group -lgtest_main -Wl,--end-group -Wl,--allow-shlib-undefined 
-
-Code:
- int main(void) { return 0; }
-Compiler stdout:
- 
-Compiler stderr:
- 
-Run-time dependency GTest found: YES (prebuilt)
-Pkg-config binary for MachineChoice.HOST is cached.
-Determining dependency 'gmock' with pkg-config executable '/usr/bin/pkg-config'
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion gmock` -> 1
-
-Pkg-config binary for MachineChoice.HOST is cached.
-Determining dependency 'gtest' with pkg-config executable '/usr/bin/pkg-config'
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion gtest` -> 1
-
-Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpvcqqvwlk
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpvcqqvwlk/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpvcqqvwlk/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Wl,--start-group -lgmock -Wl,--end-group -Wl,--allow-shlib-undefined 
-
-Code:
- int main(void) { return 0; }
-Compiler stdout:
- 
-Compiler stderr:
- /usr/bin/ld: cannot find -lgmock
-collect2: error: ld returned 1 exit status
-
-Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp9jya_y20
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp9jya_y20/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmp9jya_y20/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive 
-
-Code:
- #include<stdio.h>
-        
-        int main(void) {
-            printf("%ld\n", (long)(sizeof(void *)));
-            return 0;
-        };
-Compiler stdout:
- 
-Compiler stderr:
- 
-Program stdout:
-
-8
-
-Program stderr:
-
-
-Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpddqa63v6
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpddqa63v6/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpddqa63v6/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
+Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpgupw7nm3
+Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpgupw7nm3/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpgupw7nm3/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
 
 Code:
  
@@ -141,137 +43,5 @@ libraries: =/usr/lib/gcc/x86_64-linux-gnu/10/:/usr/lib/gcc/x86_64-linux-gnu/10/.
 
 Compiler stderr:
  
-Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpxfakfshk
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpxfakfshk/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpxfakfshk/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -fpermissive -Wl,--start-group -lgmock_main -Wl,--end-group -Wl,--allow-shlib-undefined 
-
-Code:
- int main(void) { return 0; }
-Compiler stdout:
- 
-Compiler stderr:
- /usr/bin/ld: cannot find -lgmock_main
-collect2: error: ld returned 1 exit status
-
-Run-time dependency GMock found: YES (building self)
-Pkg-config binary for MachineChoice.HOST is cached.
-Determining dependency 'sysrepo-cpp' with pkg-config executable '/usr/bin/pkg-config'
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion sysrepo-cpp` -> 0
-alpha
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --cflags sysrepo-cpp` -> 0
-
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config sysrepo-cpp --libs` -> 0
--L/usr/lib/x86_64-linux-gnu -lsysrepo-cpp
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config sysrepo-cpp --libs` -> 0
--lsysrepo-cpp
-None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
-Run-time dependency sysrepo-cpp found: YES alpha
-Pkg-config binary for MachineChoice.HOST is cached.
-Determining dependency 'doctest' with pkg-config executable '/usr/bin/pkg-config'
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion doctest` -> 1
-
-CMake binary for MachineChoice.HOST is not cached
-None of 'CMAKE' are defined in the environment, not changing global flags.
-CMake binary missing from cross or native file, or env var undefined.
-Trying a default CMake fallback at cmake
-Trying CMake binary cmake for machine MachineChoice.HOST at ['/snap/bin/cmake']
-Found CMake: /snap/bin/cmake (3.22.1)
-Extracting basic cmake information
-Try CMake generator: auto
-None of 'CC' are defined in the environment, not changing global flags.
-None of 'CFLAGS' are defined in the environment, not changing global flags.
-None of 'LDFLAGS' are defined in the environment, not changing global flags.
-None of 'CPPFLAGS' are defined in the environment, not changing global flags.
-None of 'CC_LD' are defined in the environment, not changing global flags.
-None of 'FC' are defined in the environment, not changing global flags.
-Failed to find a fortran compiler for CMake. This might cause CMake to fail.
-Called `/snap/bin/cmake --trace-expand --trace-format=json-v1 --no-warn-unused-cli --trace-redirect=cmake_trace.txt .` in /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/cmake_doctest -> 0
-  -- Module search paths:    ['/', '/opt', '/snap/cmake/1000', '/usr', '/usr/local']
-  -- CMake root:             /snap/cmake/1000/share/cmake-3.22
-  -- CMake architectures:    ['x86_64-linux-gnu']
-  -- CMake lib search paths: ['lib', 'lib32', 'lib64', 'libx32', 'share', 'lib/x86_64-linux-gnu']
-None of 'CMAKE_PREFIX_PATH' are defined in the environment, not changing global flags.
-
-Determining dependency 'doctest' with CMake executable '/snap/bin/cmake'
-Try CMake generator: auto
-None of 'CC' are defined in the environment, not changing global flags.
-None of 'CFLAGS' are defined in the environment, not changing global flags.
-None of 'LDFLAGS' are defined in the environment, not changing global flags.
-None of 'CPPFLAGS' are defined in the environment, not changing global flags.
-None of 'CC_LD' are defined in the environment, not changing global flags.
-None of 'FC' are defined in the environment, not changing global flags.
-Failed to find a fortran compiler for CMake. This might cause CMake to fail.
-Called `/snap/bin/cmake -DNAME=doctest -DARCHS=x86_64-linux-gnu -DCOMPS= --trace-expand --trace-format=json-v1 --no-warn-unused-cli --trace-redirect=cmake_trace.txt .` in /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/cmake_doctest -> 0
-Guessed CMake target 'doctest::doctest'
-CMake TARGET:
-  -- name:      doctest::doctest
-  -- type:      INTERFACE
-  -- imported:  True
-  -- properties: {
-      'INTERFACE_COMPILE_FEATURES': ['cxx_std_11']
-      'INTERFACE_INCLUDE_DIRECTORIES': ['/usr/include']
-     }
-  -- tline: CMake TRACE: /usr/lib/x86_64-linux-gnu/cmake/doctest/doctestTargets.cmake:64 add_library(['doctest::doctest', 'INTERFACE', 'IMPORTED'])
-Include Dirs:         ['/usr/include']
-Compiler Definitions: []
-Compiler Options:     []
-Libraries:            []
-Run-time dependency doctest found: YES 2.4.6
-Pkg-config binary for MachineChoice.HOST is cached.
-Determining dependency 'libyang-cpp' with pkg-config executable '/usr/bin/pkg-config'
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion libyang-cpp` -> 0
-alpha
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --cflags libyang-cpp` -> 0
-
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config libyang-cpp --libs` -> 0
--L/usr/lib/x86_64-linux-gnu -lyang-cpp
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config libyang-cpp --libs` -> 0
--lyang-cpp
-None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
-Run-time dependency libyang-cpp found: YES alpha
-Pkg-config binary for MachineChoice.HOST is cached.
-Determining dependency 'trompeloeil' with pkg-config executable '/usr/bin/pkg-config'
-PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion trompeloeil` -> 1
-
-CMake binary for MachineChoice.HOST is cached.
-None of 'CMAKE_PREFIX_PATH' are defined in the environment, not changing global flags.
-
-Determining dependency 'trompeloeil' with CMake executable '/snap/bin/cmake'
-Try CMake generator: auto
-None of 'CC' are defined in the environment, not changing global flags.
-None of 'CFLAGS' are defined in the environment, not changing global flags.
-None of 'LDFLAGS' are defined in the environment, not changing global flags.
-None of 'CPPFLAGS' are defined in the environment, not changing global flags.
-None of 'CC_LD' are defined in the environment, not changing global flags.
-None of 'FC' are defined in the environment, not changing global flags.
-Failed to find a fortran compiler for CMake. This might cause CMake to fail.
-Called `/snap/bin/cmake -DNAME=trompeloeil -DARCHS=x86_64-linux-gnu -DCOMPS= --trace-expand --trace-format=json-v1 --no-warn-unused-cli --trace-redirect=cmake_trace.txt .` in /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/cmake_trompeloeil -> 0
-Guessed CMake target 'trompeloeil::trompeloeil'
-CMake TARGET:
-  -- name:      trompeloeil::trompeloeil
-  -- type:      INTERFACE
-  -- imported:  True
-  -- properties: {
-      'INTERFACE_INCLUDE_DIRECTORIES': ['/usr/include', '/usr/include']
-     }
-  -- tline: CMake TRACE: /usr/lib/x86_64-linux-gnu/cmake/trompeloeil/trompeloeil-targets.cmake:64 add_library(['trompeloeil::trompeloeil', 'INTERFACE', 'IMPORTED'])
-Include Dirs:         ['/usr/include']
-Compiler Definitions: []
-Compiler Options:     []
-Libraries:            []
-Run-time dependency trompeloeil found: YES 41
-Build targets in project: 2
-
-Found ninja-1.8.2 at /usr/bin/ninja
 None of 'STRIP' are defined in the environment, not changing global flags.
 None of 'STRIP' are defined in the environment, not changing global flags.

@@ -1,14 +1,14 @@
 # ninja log v5
-1	860	1639957103	NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o	aae16fdf397da7d7
-2	1039	1639957103	trainee_task@exe/Source_Command.cpp.o	cefa0c2aab1c43aa
-3	1632	1639957103	trainee_task@exe/Source_View.cpp.o	8afc64379579a553
-0	1715	1639957103	NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o	6d2e1e48fc95244c
-0	1813	1639957104	NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o	23f5082ab395dc9e
-1813	1820	1639957104	NetConfAgent/libNetConfAgent.a	9c7910dd21b5ed78
-3	1926	1639957104	trainee_task@exe/Source_MobileService.cpp.o	a61697abfd5da983
-5	3032	1639957105	trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o	e00e6ba9e5a390b4
-1	1335	1639957343	trainee_task@exe/Source_MobileService.cpp.o	a61697abfd5da983
-2	1401	1639957343	trainee_task@exe/Source_View.cpp.o	8afc64379579a553
-1	1443	1639957343	NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o	6d2e1e48fc95244c
-1	1545	1639957343	NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o	23f5082ab395dc9e
-1545	1552	1639957343	NetConfAgent/libNetConfAgent.a	9c7910dd21b5ed78
+2	683	1640005885	NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o	aae16fdf397da7d7
+7	858	1640005885	trainee_task@exe/Source_Command.cpp.o	15e3bfefd6683880
+12	2049	1640005886	trainee_task@exe/main.cpp.o	405b9b9ba121f784
+2	2071	1640005886	NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o	6d2e1e48fc95244c
+8	2163	1640005886	trainee_task@exe/Source_MobileService.cpp.o	14092516ca9f1956
+9	2469	1640005886	trainee_task@exe/Source_View.cpp.o	1e35e6fe632dd077
+1	2618	1640005886	NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o	23f5082ab395dc9e
+7	3138	1640005887	Test/532eaab@@trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o	ae77b553e52fdc8a
+0	277	1640011475	build.ninja	4a68176190f98b57
+2	8	1640011475	NetConfAgent/libNetConfAgent.a	9c7910dd21b5ed78
+8	112	1640011475	trainee_task	838d3fead2c1d264
+0	230	1640011492	build.ninja	4a68176190f98b57
+1	169	0	meson-test	a85f1c56d359de93

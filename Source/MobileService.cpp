@@ -4,7 +4,7 @@ namespace mainApp
 {
 TestService::TestService()
 {
-    _mc = std::make_unique<MobileClient>();
+    _mc = std::make_unique<MobileClient>(std::make_shared<NetConfAgent>());
 }
 
 bool TestService::regist(const std::string & number)
