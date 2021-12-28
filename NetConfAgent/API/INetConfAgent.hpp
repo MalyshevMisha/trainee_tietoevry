@@ -1,6 +1,4 @@
 #pragma once
-#include"MobileClient.hpp"
-#include"INetConfAgent.hpp"
 #include<string>
 
 namespace mainApp

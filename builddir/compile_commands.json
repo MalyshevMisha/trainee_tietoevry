@@ -16,6 +16,16 @@
   },
   {
     "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
+    "command": "c++ -ITest/532eaab@@trainee_task@exe -ITest -I../Test -I../Test/Mock -I../Header -I../NetConfAgent/hpp -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread -MD -MQ 'Test/532eaab@@trainee_task@exe/Source_MobileClientTest.cpp.o' -MF 'Test/532eaab@@trainee_task@exe/Source_MobileClientTest.cpp.o.d' -o 'Test/532eaab@@trainee_task@exe/Source_MobileClientTest.cpp.o' -c ../Test/Source/MobileClientTest.cpp",
+    "file": "../Test/Source/MobileClientTest.cpp"
+  },
+  {
+    "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
+    "command": "c++ -ITest/532eaab@@trainee_task@exe -ITest -I../Test -I../Test/Mock -I../Header -I../NetConfAgent/hpp -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread -MD -MQ 'Test/532eaab@@trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o' -MF 'Test/532eaab@@trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o.d' -o 'Test/532eaab@@trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o' -c /usr/src/googletest/googlemock/src/gmock-all.cc",
+    "file": "/usr/src/googletest/googlemock/src/gmock-all.cc"
+  },
+  {
+    "directory": "/home/misha/work/tietoevry/trainee/trainee_task/builddir",
     "command": "c++ -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../NetConfAgent/API -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -MD -MQ 'trainee_task@exe/Source_Command.cpp.o' -MF 'trainee_task@exe/Source_Command.cpp.o.d' -o 'trainee_task@exe/Source_Command.cpp.o' -c ../Source/Command.cpp",
     "file": "../Source/Command.cpp"
   },

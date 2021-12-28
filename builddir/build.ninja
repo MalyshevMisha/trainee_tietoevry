@@ -55,6 +55,17 @@ build NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o: cpp_COM
 build NetConfAgent/libNetConfAgent.a: STATIC_LINKER NetConfAgent/759e613@@NetConfAgent@sta/source_NetConfAgent.cpp.o NetConfAgent/759e613@@NetConfAgent@sta/source_MobileClient.cpp.o NetConfAgent/759e613@@NetConfAgent@sta/source_PathGenerator.cpp.o
  LINK_ARGS = csrD
 
+build Test/532eaab@@trainee_task@exe/Source_MobileClientTest.cpp.o: cpp_COMPILER ../Test/Source/MobileClientTest.cpp
+ DEPFILE = Test/532eaab@@trainee_task@exe/Source_MobileClientTest.cpp.o.d
+ ARGS = -ITest/532eaab@@trainee_task@exe -ITest -I../Test -I../Test/Mock -I../Header -I../NetConfAgent/hpp -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread
+
+build Test/532eaab@@trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o: cpp_COMPILER /usr/src/googletest/googlemock/src/gmock-all.cc
+ DEPFILE = Test/532eaab@@trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o.d
+ ARGS = -ITest/532eaab@@trainee_task@exe -ITest -I../Test -I../Test/Mock -I../Header -I../NetConfAgent/hpp -I../NetConfAgent/API -I/usr/src/googletest/googlemock/src -I/usr/src/googletest/googlemock -I/usr/src/googletest/googlemock/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g -pthread
+
+build Test/trainee_task: cpp_LINKER Test/532eaab@@trainee_task@exe/Source_MobileClientTest.cpp.o Test/532eaab@@trainee_task@exe/_usr_src_googletest_googlemock_src_gmock-all.cc.o | /usr/lib/libgtest.a /usr/lib/libgtest_main.a /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libsysrepo-cpp.so /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libyang-cpp.so NetConfAgent/libNetConfAgent.a
+ LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,--start-group NetConfAgent/libNetConfAgent.a -lgtest -lgtest_main -pthread -lgtest /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libsysrepo-cpp.so /usr/lib/gcc/x86_64-linux-gnu/10/../../../../lib/libyang-cpp.so -Wl,--end-group '-Wl,-rpath,$$ORIGIN/../NetConfAgent' -Wl,-rpath-link,/home/misha/work/tietoevry/trainee/trainee_task/builddir/NetConfAgent
+
 build trainee_task@exe/Source_Command.cpp.o: cpp_COMPILER ../Source/Command.cpp
  DEPFILE = trainee_task@exe/Source_Command.cpp.o.d
  ARGS = -Itrainee_task@exe -I. -I.. -I../Header -I../NetConfAgent/hpp -I../NetConfAgent/API -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++2a -g
@@ -126,7 +137,7 @@ build meson-uninstall: CUSTOM_COMMAND PHONY
 
 build uninstall: phony meson-uninstall
 
-build all: phony NetConfAgent/libNetConfAgent.a trainee_task
+build all: phony NetConfAgent/libNetConfAgent.a Test/trainee_task trainee_task
 
 build clean: phony meson-clean
 
@@ -134,13 +145,13 @@ build meson-clean: CUSTOM_COMMAND PHONY
  COMMAND = /usr/bin/ninja -t clean
  description = Cleaning
 
-build build.ninja: REGENERATE_BUILD ../meson.build ../Source/meson.build ../NetConfAgent/meson.build meson-private/coredata.dat
+build build.ninja: REGENERATE_BUILD ../meson.build ../Source/meson.build ../NetConfAgent/meson.build ../Test/meson.build meson-private/coredata.dat
  pool = console
 
 build reconfigure: REGENERATE_BUILD PHONY
  pool = console
 
-build ../meson.build ../Source/meson.build ../NetConfAgent/meson.build meson-private/coredata.dat: phony 
+build ../meson.build ../Source/meson.build ../NetConfAgent/meson.build ../Test/meson.build meson-private/coredata.dat: phony 
 
 default all
 

@@ -1,13 +1,11 @@
 #pragma once
-#include"INetConfAgent.hpp"
+#include<regex>
 #include"NetConfAgent.hpp"
 #include"MobileState.hpp"
 #include"PathGenerator.hpp"
 
 namespace mainApp
 {
-class INetConfAgent;
-class NetConfAgent;
 
 /**
  * @brief Class that realize command.
@@ -111,7 +109,6 @@ public:
      * @return Return client name.
      */
     std::string getName();
-    
 
 private:
     std::string _name;

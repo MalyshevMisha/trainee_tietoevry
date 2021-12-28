@@ -22,7 +22,6 @@ MobileClient::~MobileClient()
         _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_STATE_PATH), StateName::_IDLE);
     }
     unregist();
-        
 }
 
 bool MobileClient::setName(const std::string & name)
@@ -35,20 +34,24 @@ bool MobileClient::setName(const std::string & name)
 
 bool MobileClient::regist(const std::string & number)
 {
+    std::cmatch result;
+    std::regex regular("([\\d+])*");
+    std::regex_match(number.c_str(), result, regular);
+    std::string regNumber = result[0];
+
     std::string res;
-    if(_name.empty() || number.empty())
+    if(_name.empty() || regNumber.empty() || !_number.empty())
         return false;
-    else if(_netConf->fetchData(PathGenerator::generatePath(_number, PathGenerator::_NUMBER_PATH), res ))
+    else if(_netConf->fetchData(PathGenerator::generatePath(regNumber, PathGenerator::_NUMBER_PATH), 
+            res ))
         return false;
-    _number = number;
-    _netConf->changeData(PathGenerator::generatePath(number, PathGenerator::_NUMBER_PATH), _number);
+    _number = regNumber;
+    _netConf->changeData(PathGenerator::generatePath(regNumber, PathGenerator::_NUMBER_PATH), _number);
     _netConf->registerOperData(PathGenerator::_MODEL_NAME,PathGenerator::generatePath(_number, PathGenerator::_NAME_PATH), *this);
     _netConf->subscribeForModelChanges(PathGenerator::_MODEL_NAME, 
-                                    PathGenerator::generatePath(number, PathGenerator::_PATH_FOR_SUBSCRIBE), 
+                                    PathGenerator::generatePath(regNumber, PathGenerator::_PATH_FOR_SUBSCRIBE), 
                                     *this);
-    _netConf->changeData(PathGenerator::generatePath(number, PathGenerator::_STATE_PATH), StateName::_IDLE);
-    //_netConf->getOperData(PathGenerator::generatePath(_number, PathGenerator::_NAME_PATH), res); 
-    //std::cout << "--regist() getOperData() result\t" << res << "--" << std::endl;
+    _netConf->changeData(PathGenerator::generatePath(regNumber, PathGenerator::_STATE_PATH), StateName::_IDLE);
     _state = State::Idle;
     return true;
 }
@@ -80,13 +83,19 @@ bool MobileClient::call(const std::string & number)
     else if(_netConf->fetchData(PathGenerator::generatePath(number, 
                                 PathGenerator::_STATE_PATH), res ))
             {
-                if(res == "idle")
+                if(res == StateName::_IDLE)
                 {
                     _outgoingNumber = number;
                 
-                    _netConf->changeData(PathGenerator::generatePath(_outgoingNumber, PathGenerator::_STATE_PATH), StateName::_ACTIVE);
-                    _netConf->changeData(PathGenerator::generatePath(_outgoingNumber, PathGenerator::_INCOMING_NUMBER_PATH), _number);
-                    _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_STATE_PATH), StateName::_ACTIVE);
+                    _netConf->changeData(PathGenerator::generatePath(_outgoingNumber, 
+                                                                    PathGenerator::_STATE_PATH), 
+                                        StateName::_ACTIVE);
+                    _netConf->changeData(PathGenerator::generatePath(_outgoingNumber, 
+                                                                    PathGenerator::_INCOMING_NUMBER_PATH), 
+                                        _number);
+                    _netConf->changeData(PathGenerator::generatePath(_number, 
+                                                                    PathGenerator::_STATE_PATH), 
+                                        StateName::_ACTIVE);
                     return true;
                 }
             }
@@ -155,16 +164,17 @@ bool MobileClient::answer()
 
 bool MobileClient::callEnd()
 {
-     if(_state == State::Busy && !_incomingNumber.empty())
+    if(_state == State::Busy && !_incomingNumber.empty())
     {
         _netConf->changeData(PathGenerator::generatePath(_incomingNumber, PathGenerator::_STATE_PATH), StateName::_IDLE);
-        _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_INCOMING_NUMBER_PATH), "");
+        _netConf->removeItem(PathGenerator::generatePath(_number, PathGenerator::_INCOMING_NUMBER_PATH));
         _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_STATE_PATH), StateName::_IDLE);
         return true;
     }
     else if(_state == State::Busy && !_outgoingNumber.empty())
     {
         _netConf->changeData(PathGenerator::generatePath(_outgoingNumber, PathGenerator::_STATE_PATH), StateName::_IDLE);
+        _netConf->removeItem(PathGenerator::generatePath(_outgoingNumber, PathGenerator::_INCOMING_NUMBER_PATH));
         _netConf->changeData(PathGenerator::generatePath(_number, PathGenerator::_STATE_PATH), StateName::_IDLE);
         return true;
     }
@@ -187,4 +197,5 @@ std::string MobileClient::getName()
 {
     return _name;
 }
+
 }

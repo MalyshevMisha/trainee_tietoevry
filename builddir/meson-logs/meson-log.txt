@@ -1,4 +1,4 @@
-Build started at 2021-12-20T16:44:52.019416
+Build started at 2021-12-21T14:20:33.244586
 Main binary: /usr/bin/python3
 Build Options: -Dbackend=ninja
 Python system: Linux
@@ -27,12 +27,15 @@ Dependency sysrepo-cpp found: YES alpha (cached)
 Dependency doctest found: YES 2.4.6 (cached)
 Dependency libyang-cpp found: YES alpha (cached)
 Dependency trompeloeil found: YES 41 (cached)
-Build targets in project: 2
+Dependency gtest found: YES unknown (cached)
+Dependency gmock found: YES unknown (cached)
+Adding test "mobCli_test"
+Build targets in project: 3
 
 Found ninja-1.8.2 at /usr/bin/ninja
 Running compile:
-Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpgupw7nm3
-Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpgupw7nm3/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpgupw7nm3/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
+Working directory:  /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpujgjbbho
+Command line:  c++ /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpujgjbbho/testfile.cpp -o /home/misha/work/tietoevry/trainee/trainee_task/builddir/meson-private/tmpujgjbbho/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
 
 Code:
  

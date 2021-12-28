@@ -1,11 +1,6 @@
 #pragma once
 #include<gmock/gmock.h>
 #include"INetConfAgent.hpp"
-#include"NetConfAgent.hpp"
-#include"MobileClient.hpp"
-
-class mainApp::INetConfAgent;
-class mainApp::NetConfAgent;
 
 namespace mock
 {

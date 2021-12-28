@@ -1,4 +1,5 @@
 #include"NetConfAgent.hpp"
+#include"MobileClient.hpp"
 
 namespace mainApp
 {
@@ -64,7 +65,8 @@ bool NetConfAgent::removeItem(const std::string & path)
 
 bool NetConfAgent::registerOperData(const std::string & modelName, const std::string & path, MobileClient & mobC)
 {
-    sysrepo::OperGetItemsCb operGetCb = [&, path] (sysrepo::Session, auto, auto, auto, auto, auto, std::optional<libyang::DataNode>& parent) {
+    sysrepo::OperGetItemsCb operGetCb = [&, path] (sysrepo::Session, auto, auto, auto, auto, auto, std::optional<libyang::DataNode>& parent) 
+    {
         parent = _sess->getContext().newPath(path.c_str(), mobC.getName().c_str());
         return sysrepo::ErrorCode::Ok;
     };

@@ -3,7 +3,6 @@
 #include<iostream>
 #include<optional>
 #include<atomic>
-#include"MobileClient.hpp"
 #include"INetConfAgent.hpp"
 
 namespace mainApp

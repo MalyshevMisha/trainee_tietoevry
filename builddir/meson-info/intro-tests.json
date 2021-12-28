@@ -1,1 +1,1 @@
-[]
+[{"cmd": ["/home/misha/work/tietoevry/trainee/trainee_task/builddir/Test/trainee_task"], "env": {}, "name": "mobCli_test", "workdir": null, "timeout": 30, "suite": ["trainee_project"], "is_parallel": true, "priority": 0, "protocol": "exitcode"}]

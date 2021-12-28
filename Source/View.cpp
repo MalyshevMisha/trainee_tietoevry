@@ -35,7 +35,7 @@ void CLI::executeCommand(Command com)
     else if(com.getCommandName() == "exit" && com.getAttributes().size() == 0)
         mainLoop = false;
     else
-        std::cout<<"wrong command" << std::endl;
+        std::cout<<"--wrong command--" << std::endl;
 }
 
 void CLI::execute()
